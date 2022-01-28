@@ -36,7 +36,7 @@ entity TOP_LEVEL is
         clk         : in std_logic;
         reset       : in std_logic;
 
-        data_out    : in std_logic
+        data_out    : out std_logic
         
     );
 end entity TOP_LEVEL;
