@@ -29,3 +29,13 @@ entity main is
         
     );
 end entity main;
+
+architecture rtl of main is
+
+    --! Signal declarations
+    
+begin
+    
+    
+    
+end architecture rtl;
