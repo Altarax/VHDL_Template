@@ -36,6 +36,26 @@ architecture rtl of main is
     
 begin
     
-    
+    --! Synchronous reset process
+   proc_name: process(clk)
+   begin
+       if rising_edge(clk) then
+           if rst = rst_val then
+               
+           else
+               
+           end if;
+       end if;
+   end process proc_name;
+
+   --! Asynchronous reset process
+  proc_name: process(clk, rst)
+  begin
+      if rst = rst_val then
+          
+      elsif rising_edge(clk) then
+          
+      end if;
+  end process proc_name;
     
 end architecture rtl;
