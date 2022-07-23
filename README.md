@@ -7,5 +7,5 @@ two "main" files and I'll add everything I can to prepare my future projects.
 
 Also, i'm using a bit of doxygen even if I won't necessarily use it for my personnal projects.  
 
-## Usefull packages
+## Useful packages
 I'll add every package I create that I find useful for future projects.
