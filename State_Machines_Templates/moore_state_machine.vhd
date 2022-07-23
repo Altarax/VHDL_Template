@@ -41,7 +41,8 @@ begin
     
     Moore_design: process(stateMoore_reg, level)
     begin 
-        stateMoore_next <= stateMoore_reg; 
+
+
         Moore_tick <= '0';
 
         case stateMoore_reg is 
