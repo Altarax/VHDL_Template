@@ -19,7 +19,7 @@ use IEEE.numeric_std.all;
 --! \brief Entity of the main file
 --! \details Description
 
-entity main is
+entity template is
     port (
 
         clk         : in std_logic;
@@ -28,9 +28,9 @@ entity main is
         data_out    : out std_logic
         
     );
-end entity main;
+end entity template;
 
-architecture rtl of main is
+architecture template_arch of template is
 
     --! Signal declarations
     
@@ -58,4 +58,4 @@ begin
       end if;
   end process proc_name;
     
-end architecture rtl;
+end architecture template_arch;
