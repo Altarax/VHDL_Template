@@ -18,9 +18,29 @@ entity alu is
 end alu;
 
 architecture behavioral of alu is
-  signal adder_output : std_logic_vector(width downto 0);
-  signal shifter_output : std_logic_vector(width-1 downto 0);
+
+    constant AND_GATE       : bits4 := "0000";
+    constant OR_GATE        : bits4 := "0001";
+    constant XOR_GATE       : bits4 := "0010";
+    constant ADDITION       : bits4 := "0011";
+    constant SUBTRACTION    : bits4 := "0100";
+    constant MULTIPLICATION : bits4 := "0101";
+    constant DIVISION       : bits4 := "0110";
+    constant MODUL0         : bits4 := "0111";
+    constant AND_NOT_GATE   : bits4 := "1000";
+    constant OR_NOT_GATE    : bits4 := "1001";
+    constant NOT_GATE       : bits4 := "1010";
+    constant ADDER_OUTPUT   : bits4 := "1011";
+    constant SHIFTER_OUTPUT : bits4 := "1100";
+    constant DATA_A         : bits4 := "1101";
+    constant DATA_B         : bits4 := "1110";
+    constant ZERO           : bits4 := "1111";
+
+    signal adder_output : std_logic_vector(width downto 0);
+    signal shifter_output : std_logic_vector(width-1 downto 0);
+
 begin
+
     adder : entity work.adder
         generic map(width => width)
         port map(
@@ -28,6 +48,7 @@ begin
               b => data_b,
               sum => adder_output(width-1 downto 0),
               carry_out => adder_output(width));
+
     shifter : entity work.barrel_shifter
         generic map(width => width)
         port map(
@@ -35,25 +56,26 @@ begin
               shift => data_b,
               direction => opcode(0),
               output => shifter_output);
+
     process(data_a, data_b, opcode)
     begin
         case opcode is
-            when "0000" => result <= data_a and data_b;
-            when "0001" => result <= data_a or data_b;
-            when "0010" => result <= data_a xor data_b;
-            when "0011" => result <= data_a + data_b;
-            when "0100" => result <= data_a - data_b;
-            when "0101" => result <= data_a * data_b;
-            when "0110" => result <= data_a / data_b;
-            when "0111" => result <= data_a mod data_b;
-            when "1000" => result <= data_a and not data_b;
-            when "1001" => result <= data_a or not data_b;
-            when "1010" => result <= not data_a;
-            when "1011" => result <= adder_output;
-            when "1100" => result <= shifter_output;
-            when "1101" => result <= data_a;
-            when "1110" => result <= data_b;
-            when "1111" => result <= (others => '0');
+            when AND_GATE => result <= data_a and data_b;
+            when OR_GATE => result <= data_a or data_b;
+            when XOR_GATE => result <= data_a xor data_b;
+            when ADDITION => result <= std_logic_vector(unsigned(data_a) + unsigned(data_b));
+            when SUBTRACTION => result <= std_logic_vector(unsigned(data_a) - unsigned(data_b));
+            when MULTIPLICATION => result <= std_logic_vector(unsigned(data_a) * unsigned(data_b));
+            when DIVISION => result <= std_logic_vector(unsigned(data_a) / unsigned(data_b));
+            when MODULO => result <= data_a mod data_b;
+            when AND_NOT_GATE => result <= data_a and not data_b;
+            when OR_NOT_GATE => result <= data_a or not data_b;
+            when NOT_GATE => result <= not data_a;
+            when ADDER_OUTPUT => result <= adder_output;
+            when SHIFTER_OUTPUT => result <= shifter_output;
+            when DATA_A => result <= data_a;
+            when DATA_B => result <= data_b;
+            when ZERO => result <= (others => '0');
             when others => null;
         end case;
         zero <= result = (others => '0');
