@@ -67,7 +67,7 @@ begin
             when SUBTRACTION => result <= std_logic_vector(unsigned(data_a) - unsigned(data_b));
             when MULTIPLICATION => result <= std_logic_vector(unsigned(data_a) * unsigned(data_b));
             when DIVISION => result <= std_logic_vector(unsigned(data_a) / unsigned(data_b));
-            when MODULO => result <= data_a mod data_b;
+            when MODUL0 => result <= data_a mod data_b;
             when AND_NOT_GATE => result <= data_a and not data_b;
             when OR_NOT_GATE => result <= data_a or not data_b;
             when NOT_GATE => result <= not data_a;
