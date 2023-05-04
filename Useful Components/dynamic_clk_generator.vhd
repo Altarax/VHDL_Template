@@ -41,7 +41,7 @@ begin
                 max_counter <= 2;
             else 
                 case SOMETHING is
-s
+
                     when SOMETHING => 
 
                         if VALUE <= TIMING then
