@@ -2,10 +2,10 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity delay_register is
-    generic(
+    Generic (
         data_length : natural := 32
     );
-    port (
+    Port (
         reset_n, clk    : in  std_logic;
         en              : in std_logic;
         d_in            : in std_logic_vector(data_length-1 downto 0);

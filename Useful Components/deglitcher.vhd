@@ -3,11 +3,11 @@ library ieee;
   use ieee.numeric_std.all;
 
 entity deglitcher is
-    generic (
+    Generic (
         clock_ticks : positive := 10;
         data_width : positive := 8
     );
-    port (
+    Port (
         clk_in : in std_logic;
         reset : in std_logic;
         data_to_deglitch : in std_logic;

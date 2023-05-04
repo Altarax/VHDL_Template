@@ -3,11 +3,11 @@ use ieee.std_logic_1164.all;
 use ieee.math_real.all;
 
 entity alu is
-    generic(
+    Generic (
           width : integer := 8;
           num_operations : integer := 16
     );
-    port(
+    Port (
           data_a    : in std_logic_vector(width-1 downto 0);
           data_b    : in std_logic_vector(width-1 downto 0);
           opcode    : in std_logic_vector(log2(num_operations)-1 downto 0);

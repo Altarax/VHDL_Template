@@ -20,7 +20,9 @@ use IEEE.numeric_std.all;
 --! \details Description
 
 entity template is
-    port (
+    Generic (
+    )
+    Port (
 
         clk         : in std_logic;
         reset       : in std_logic;
